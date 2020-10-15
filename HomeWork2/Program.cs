@@ -18,17 +18,21 @@ namespace HomeWork2
     {
         static void Main(string[] args)
         {
-            //FirstTask();
-            //NewClass1.NextTask();
-            //SecondTask();
-            //NewClass1.NextTask();
-            //ThirdTask();
-            //NewClass1.NextTask();
-            //FourthTask();
-            //NewClass1.NextTask();
-            //FifthTask();
-            //NewClass1.NextTask();
+            FirstTask();
+            NewClass1.NextTask();
+            SecondTask();
+            NewClass1.NextTask();
+            ThirdTask();
+            NewClass1.NextTask();
+            FourthTask();
+            NewClass1.NextTask();
+            FifthTask();
+            NewClass1.NextTask();
             SixthTask();
+            NewClass1.NextTask();
+            SeventhTaskA();
+            NewClass1.NextTask();
+            SeventhTaskB();
         }
 
         //1 Задание:
@@ -203,13 +207,13 @@ namespace HomeWork2
             for (int i = 1; i < 1000000000; i++)
             {
                 int balance = i;
-                int SumOfNumbers = 0;
+                int sumOfNumbers = 0;
                 while (balance > 0)
                 {
-                    SumOfNumbers += balance % 10;
+                    sumOfNumbers += balance % 10;
                     balance /= 10;
                 }
-                if (i % SumOfNumbers == 0)
+                if (i % sumOfNumbers == 0)
                 {
                     goodNumbers++;
                 }
@@ -221,8 +225,77 @@ namespace HomeWork2
 
         //7 Задание:
         //a) Разработать рекурсивный метод, который выводит на экран числа от a до b(a<b).
-        //б) *Разработать рекурсивный метод, который считает сумму чисел от a до b.
+        public static void SeventhTaskA()
+        {
+            Console.WriteLine("Введите число a:");
+            int firstNumber = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine("Введите число b:");
+            int secondNumber = Convert.ToInt32(Console.ReadLine());
+
+            if (firstNumber < secondNumber)
+            {
+                OutputNumber(firstNumber,secondNumber);
+            }
+            else
+            {
+                Console.WriteLine("Введены неверные числа попробуйте еще раз.");
+                SeventhTaskA();
+            }
+        }
+
+        public static void OutputNumber(int firstNumber,int secondNumber)
+        {
+            if (firstNumber <= secondNumber)
+            {
+                Console.WriteLine($"{firstNumber} ");
+                firstNumber++;
+                OutputNumber(firstNumber, secondNumber);
+
+            }
+            else
+            {
+                Console.WriteLine(" конец.");
+                Console.ReadKey();
+            }
+        }
+
+        //7 Задание:
+        ////б) *Разработать рекурсивный метод, который считает сумму чисел от a до b.
+        public static void SeventhTaskB()
+        {
+
+            int sum = 0;
+            Console.WriteLine("Введите число a:");
+            int firstNumber = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите число b:");
+            int secondNumber = Convert.ToInt32(Console.ReadLine());
+            if (firstNumber < secondNumber)
+            {
+                SumNumber(firstNumber, secondNumber, sum);
+            }
+            else
+            {
+                SumNumber(secondNumber, firstNumber, sum);
+            }
+        }
+
+        public static void SumNumber(int firstNumber, int secondNumber,int sum)
+        {
+            if (firstNumber <= secondNumber)
+            {
+                sum += firstNumber;
+                firstNumber++;
+                SumNumber(firstNumber, secondNumber,sum);
+
+            }
+            else
+            {
+                Console.WriteLine($"Суммма чисел от a до b : {sum} ");
+                Console.ReadKey();
+            }
+        }
 
 
         class NewClass1
